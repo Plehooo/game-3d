@@ -1,15 +1,17 @@
-# Ditz Adventure 3D
+# Ditz Adventure 3D — World Edition
 
-Game petualangan 3D Android (Java + C++ NDK / OpenGL ES 2.0).
+Game petualangan 3D Android berbasis **Java + C++ NDK + OpenGL ES 2.0**.
 
-## Build lewat GitHub Actions
-1. Upload semua isi folder ini ke repo GitHub
-2. Buka tab **Actions** -> workflow **Build APK** (jalan otomatis tiap push)
-3. Selesai -> download artifact **DitzAdventure3D-debug-apk**, install APK-nya
+## Upgrade
+- Ditz City: jalan, persimpangan, gedung, jendela, lampu kota, plaza + fountain
+- NPC / pengguna dunia yang bergerak
+- 4 world: Ditz City, Emerald Forest, Sahara Ruins, Frost Valley
+- Dynamic day / dusk / night, sun, moon, stars, clouds, fog
+- 10 hero skins + 5 pet companions
+- Skin Shop + Pet Shop, pembelian memakai points dan tersimpan
+- World Map / fast travel
+- HUD baru + game logo/icon
+- Gameplay tetap: joystick, kamera drag, serang musuh, points, pet
 
-## Kontrol
-- Joystick kiri bawah: jalan
-- Geser layar (sisi manapun): putar kamera
-- SERANG: serang musuh (auto-aim ke musuh terdekat)
-- Tombol kanan atas: Karakter / Skin / Pet / Peta
-- Skin & Pet terkunci, buka dengan poin (kill musuh = poin)
+## Build
+Upload project ke GitHub lalu jalankan GitHub Actions workflow **Build APK**.
