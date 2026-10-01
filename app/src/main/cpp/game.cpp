@@ -328,6 +328,40 @@ static void drawNPCs(){
     }
 }
 
+// ---------- Enemies ----------
+static void drawEnemies(){
+    for(int i=0;i<10;i++){
+        Enemy&e=E[i];
+        if(!e.alive) continue;
+
+        float wx=wrapRel(e.x,G.x,100), wz=wrapRel(e.z,G.z,100);
+        float bob=fabsf(sinf(G.t*7.0f+e.ph))*0.07f;
+        float face=atan2f(G.x-e.x,G.z-e.z);
+        float scale=0.90f+0.08f*(float)(i%3);
+        M4 b=mul(trans(wx,bob,wz),mul(rotY(face),scl(scale,scale,scale)));
+        C body=ENEMYC[G.map%4];
+        C dark=mulc(body,0.62f);
+
+        // Compact monster humanoid: body, head, arms, legs.
+        drawHumanoid(b,body,dark,1.0f,e.ph);
+        boxM(b,-.10f,1.50f,.225f,.055f,.055f,.025f,RED,1);
+        boxM(b,.10f,1.50f,.225f,.055f,.055f,.025f,RED,1);
+
+        // Horns / ears.
+        boxM(b,-.20f,1.78f,0,.10f,.22f,.10f,dark);
+        boxM(b,.20f,1.78f,0,.10f,.22f,.10f,dark);
+
+        // Chest core gives each enemy a readable combat silhouette.
+        boxM(b,0,1.02f,.205f,.16f,.16f,.06f,ROADLINE,1);
+
+        // Floating HP bar.
+        float maxHp=4.0f+(float)G.map;
+        float hp=clampf(e.hp/maxHp,0.f,1.f);
+        boxM(b,0,2.02f,0,.46f,.055f,.035f,BLACK,1);
+        if(hp>0.001f) boxM(b,(hp-1.f)*.23f,2.02f,.02f,.23f*hp,.04f,.025f,RED,1);
+    }
+}
+
 // ---------- Pets ----------
 static void drawPet(){
     if(G.pet==0)return;
